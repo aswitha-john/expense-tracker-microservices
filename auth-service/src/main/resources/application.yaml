@@ -8,3 +8,7 @@ spring:
   cloud:
     config:
       uri: http://localhost:8888
+
+jwt:
+  secret: my-super-secure-jwt-secret-key-1234567890-abcd
+  expiration: 3600000
