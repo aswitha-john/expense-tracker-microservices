@@ -2,6 +2,8 @@ package com.expense.api_gateway.filter;
 
 import com.expense.api_gateway.utility.JwtUtil;
 import io.jsonwebtoken.Claims;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
@@ -14,6 +16,7 @@ import reactor.core.publisher.Mono;
 @Component
 public class JwtAuthenticationFilter implements GlobalFilter, Ordered {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(JwtAuthenticationFilter.class);
     private final JwtUtil jwtUtil;
 
     public JwtAuthenticationFilter(JwtUtil jwtUtil) {
@@ -57,7 +60,7 @@ public class JwtAuthenticationFilter implements GlobalFilter, Ordered {
             exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
             return exchange.getResponse().setComplete();
         }
-
+        LOGGER.info("Authorization header: {}", authHeader);
         return chain.filter(exchange);
     }
 
