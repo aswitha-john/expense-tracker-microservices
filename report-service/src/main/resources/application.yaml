@@ -8,3 +8,21 @@ spring:
   cloud:
     config:
       uri: http://localost:8888
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/expense_db
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+
+server:
+  port: 8083
+
+

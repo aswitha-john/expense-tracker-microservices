@@ -1,5 +1,6 @@
 package com.expense.auth_service.controller;
 
+import com.expense.auth_service.dto.ApiResponse;
 import com.expense.auth_service.dto.LoginRequest;
 import com.expense.auth_service.dto.RegisterRequest;
 import com.expense.auth_service.service.AuthService;
@@ -22,9 +23,9 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody RegisterRequest request){
+    public ResponseEntity<ApiResponse> register(@RequestBody RegisterRequest request){
         authService.register(request);
-        return ResponseEntity.ok("User Registered successfully");
+        return ResponseEntity.ok(new ApiResponse("SUCCESS", "User registered successfully"));
     }
 
     @PostMapping("/login")
