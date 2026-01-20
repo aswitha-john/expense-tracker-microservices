@@ -33,7 +33,7 @@ public class ExpenseController {
 
         return ResponseEntity.ok(
                 new ApiResponse<>(LocalDateTime.now(),
-                        200,
+                        201,
                         "Expense created successfully",
                         saved
                 )
